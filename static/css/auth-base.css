@@ -1,0 +1,19 @@
+body{
+    background-color: transparent !important;
+    background-image: linear-gradient(rgba(255,255,255,0.7) 240px,rgba(255,255,255,0.7) 240px),url(../images/pattern.jpg) !important
+}
+
+.login-block{
+    padding-top: 10% !important;
+}
+
+.signup-block{
+    margin: 30px auto;
+    min-height: 93.6vh;
+    padding-top: 5% !important;
+}
+
+.signup-block .auth-box{
+    margin: 20px auto 0;
+    max-width: 450px;
+}
