@@ -1,0 +1,30 @@
+{% extends "dashboard.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5>DropDown1</h5>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12">
+                    {% for options in drop_dow_1 %}
+                        <option value="{{options.name}}">{{options.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12">
+                    {% for options in drop_dow_1 %}
+                        <option value="{{options.name}}">{{options.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
