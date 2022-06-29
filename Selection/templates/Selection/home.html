@@ -2,29 +2,45 @@
 
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">        
+{% endblock %}
+
 {% block content %}
 <div class="card">
     <div class="card-header">
-        <h5>DropDown1</h5>
+        <h5>DropDowns</h5>
     </div>
     <div class="card-block">
         <div class="row">
             <div class="col-sm-12 col-xl-4 m-b-30">
-                <select class="js-example-basic-single col-sm-12">
+                <select class="js-example-basic-single col-sm-12" id="dropdown1" onchange="dropDown1Change()">
+                    <option value="">----</option>
                     {% for options in drop_dow_1 %}
-                        <option value="{{options.name}}">{{options.name}}</option>
+                        <option value="{{options.id}}">{{options.name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div class="col-sm-12 col-xl-4 m-b-30">
-                <select class="js-example-basic-single col-sm-12">
-                    {% for options in drop_dow_1 %}
-                        <option value="{{options.name}}">{{options.name}}</option>
-                    {% endfor %}
+                <select class="js-example-basic-single col-sm-12" id="dropdown2" onchange="dropDown2Change()">
+                    <option value="">----</option>
+                </select>
+            </div>
+
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12" id="dropdown3" onchange="dropDown3Change()">
+                    <option value="">----</option>
                 </select>
             </div>
         </div>
     </div>
+
+    <div class="card" id="dataAttributeDiv">
+    </div>
 </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/dropdown.js' %}"></script>
 {% endblock %}

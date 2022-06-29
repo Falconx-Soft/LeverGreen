@@ -5,3 +5,9 @@ from .models import*
 admin.site.register(DropDown1)
 
 admin.site.register(DropDown2)
+
+admin.site.register(DataAttribute)
+
+admin.site.register(DataAttributeType)
+
+admin.site.register(MappedTable)
