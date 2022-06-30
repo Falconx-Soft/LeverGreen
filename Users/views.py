@@ -6,9 +6,10 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 # Create your views here.
-@login_required(login_url='login')
-def home(request):
-    return render(request,'dashboard.html')
+def index(request):
+    return render(request,'Users/index.html')
+
+
 
 def loginUser(request):
 

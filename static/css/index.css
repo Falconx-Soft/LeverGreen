@@ -1,0 +1,17 @@
+.we-do-img{
+    height: 249px;
+    width: 50%;
+}
+
+.we-do-text{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+
+.we-do-card-div{
+    width: 75%;
+    
+}

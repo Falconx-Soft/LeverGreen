@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BizLand Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'index/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'index/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'index/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'index/css/style.css' %}" rel="stylesheet">
+
+  <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BizLand - v3.7.0
+  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo error"></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="#">Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <h1>Welcome to <br><span>LeverGreen Energy</span></h1>
+      <br>
+      <h2 style="max-width: 63%;">The mission of LeverGreen is to provide curated data service to renewable 
+        developers and power infrastructure investors to help with the asset due 
+        diligence and strategic investment planning. 
+        </h2>
+      <div class="d-flex">
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+       </div>
+    </div>
+  </section><!-- End Hero -->
+
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about section-bg">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Working</h2>
+            <h3>Find Out More About <span>What we do.</span></h3>
+          </div>
+
+          <div class="we-do-card-div">
+            <div class="card d-flex" style="flex-direction: row;">
+              <img class="card-img-top we-do-img" src="{% static 'images/pic1.jpg' %}" alt="Card image cap">
+              <div class="we-do-text">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="card" style="flex-direction: row;">
+              <img class="card-img-top we-do-img" src="{% static 'images/pic2.jpg' %}" alt="Card image cap">
+              <div class="we-do-text">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section><!-- End About Section -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'index/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'index/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'index/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'index/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'index/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'index/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'index/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'index/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'index/js/main.js' %}"></script>
+
+</body>
+
+</html>
