@@ -1,3 +1,15 @@
+.we-do-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.we-do-card{
+    display: flex;
+    flex-direction: row;
+}
+
 .we-do-img{
     height: 249px;
     width: 50%;
@@ -13,5 +25,29 @@
 
 .we-do-card-div{
     width: 75%;
+}
+
+@media only screen and (max-width:993px) {
+    .we-do-card-div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .we-do-container{
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .we-do-card{
+        display: block;
+    }
+    .we-do-img{
+        width: 100%;
+    }
     
+    .we-do-text{
+        width: 100%;
+    }
 }

@@ -49,7 +49,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="#">Login</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="nav-link scrollto" href="{% url 'logout' %}">logout</a></li>
+          {% else %}
+            <li><a class="nav-link scrollto" href="{% url 'login' %}">Login</a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -67,14 +71,21 @@
         diligence and strategic investment planning. 
         </h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="btn-get-started scrollto">Get Started</a>
+          {% endif %}
+
+        
        </div>
     </div>
   </section><!-- End Hero -->
 
       <!-- ======= About Section ======= -->
       <section id="about" class="about section-bg">
-        <div class="container" data-aos="fade-up">
+        <div class="container we-do-container" data-aos="fade-up">
   
           <div class="section-title">
             <h2>Working</h2>
@@ -82,7 +93,7 @@
           </div>
 
           <div class="we-do-card-div">
-            <div class="card d-flex" style="flex-direction: row;">
+            <div class="card we-do-card">
               <img class="card-img-top we-do-img" src="{% static 'images/pic1.jpg' %}" alt="Card image cap">
               <div class="we-do-text">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -91,7 +102,7 @@
 
             <br>
 
-            <div class="card" style="flex-direction: row;">
+            <div class="card we-do-card">
               <img class="card-img-top we-do-img" src="{% static 'images/pic2.jpg' %}" alt="Card image cap">
               <div class="we-do-text">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
