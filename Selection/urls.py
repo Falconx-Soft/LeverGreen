@@ -6,6 +6,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('home/', views.home, name="home"),
+    path('selections/', views.selections, name="selections"),
     path('dropdown/', views.dropdown, name="dropdown"),
 ]

@@ -4,14 +4,14 @@ from .models import *
 from django.http import JsonResponse
 # Create your views here.
 
-def home(request):
+def selections(request):
     context = {}
     if request.user.is_authenticated:
         drop_dow_1 = DropDown1.objects.all()
         context = {
             'drop_dow_1':drop_dow_1
         }
-    return render(request,'Selection/home.html',context)
+    return render(request,'Selection/selections.html',context)
 
 @login_required(login_url='login')
 def dropdown(request):

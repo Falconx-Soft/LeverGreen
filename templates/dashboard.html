@@ -18,26 +18,9 @@
 
 
 
-<div id="pcoded" class="pcoded">
-    <div class="pcoded-overlay-box"></div>
-    <div class="pcoded-container navbar-wrapper">
+    {% block content %}
 
-        {% include 'nav.html' %}
-
-        <div class="pcoded-main-container">
-            <div class="pcoded-wrapper">
-
-                {% include 'sidebar.html' %}
-
-                <div class="pcoded-content">
-                    {% block content %}
-
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% endblock %}
 
     {% include 'scripts.html' %}
 

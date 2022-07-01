@@ -4,3 +4,32 @@
     padding: 20px;
     font-size: larger;
 }
+
+#hero{
+    display: flex;
+    align-items: center;
+    padding-top: 10%;
+    min-width: 100vh !important;
+    width: auto;
+}
+
+.logout-btn{
+    background-color: #347C17;
+    border-radius: 5px !important;
+    color: white !important;
+    padding: 5px !important;
+    text-decoration: none !important;
+    /* width: 48px; */
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.card-block{
+    background-color: transparent;
+}
+
+.select2-container{
+    width: 100%;
+    min-width: 250px;
+}
+

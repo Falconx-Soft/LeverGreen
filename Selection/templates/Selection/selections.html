@@ -1,0 +1,152 @@
+{% extends "dashboard.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">        
+{% endblock %}
+
+{% block content %}
+
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo error"></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}">Home</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="logout-btn" href="{% url 'logout' %}">logout</a></li>
+          {% else %}
+            <li>
+
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" style="background-color: #347C17;">
+                login
+              </button>
+              
+              <!-- The Modal -->
+              <div class="modal" id="myModal">
+                <div class="modal-dialog" id="login-modal">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Login</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <form role="form" action="{% url 'login' %}" class="modal-form" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                        <input type="text" class="form-control" id="usrname" name="username" placeholder="Enter email">
+                      </div>
+                      <div class="form-group">
+                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                        <input type="password"  class="form-control" name="password" id="psw" placeholder="Enter password">
+                      </div>
+                        <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    </form>
+              
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <div>
+                        <p style="margin: 0px;" id="create-account">Dont have an account? <span class="create-account-btn"><b>create account</b></span></p>
+                        <a href="{% url 'reset_password' %}" style="text-decoration: none;">Forget Password?</a>
+                      </div>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+
+                <div class="modal-dialog" id="sign-up-modal">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Sign-up</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <form role="form" action="{% url 'register' %}" class="modal-form" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                        <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter Username" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                        <input type="password" class="form-control" name="password1" id="psw" placeholder="Enter password" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Confirm Password</label>
+                        <input type="password" class="form-control" name="password2" id="psw" placeholder="Enter password again" required>
+                      </div>
+                        <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Sign up</button>
+                    </form>
+              
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <div>
+                        <p style="margin: 0px;">Have an account? <span class="login-account-btn"><b>Login</b></span></p>
+                      </div>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+<div class="card" id="hero">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12" id="dropdown1" onchange="dropDown1Change()">
+                    <option value="">----</option>
+                    {% for options in drop_dow_1 %}
+                        <option value="{{options.id}}">{{options.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12" id="dropdown2" onchange="dropDown2Change()">
+                    <option value="">----</option>
+                </select>
+            </div>
+
+            <div class="col-sm-12 col-xl-4 m-b-30">
+                <select class="js-example-basic-single col-sm-12" id="dropdown3" onchange="dropDown3Change()">
+                    <option value="">----</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="dataAttributeDiv">
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/dropdown.js' %}"></script>
+{% endblock %}

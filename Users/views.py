@@ -17,8 +17,8 @@ def loginUser(request):
         return redirect('home')
     msg = None
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         try:
             user = User.objects.get(username=username)
@@ -26,7 +26,7 @@ def loginUser(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('index')
             else:
                 msg = 'User/Something is wrong'
         except:
@@ -34,7 +34,7 @@ def loginUser(request):
     context = {
         'msg':msg
     }
-    return render(request,'Users/login.html',context)
+    return render(request,'Users/index.html',context)
 
 def register(request):
     msg = None
@@ -45,11 +45,11 @@ def register(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            return redirect('login')
+            return redirect('index')
         else:
             msg = 'form validation error.'
     context = {'form':form, 'msg':msg}
-    return render(request,'Users/sign-up.html', context)
+    return render(request,'Users/index.html', context)
 
 def logoutUser(request):
     logout(request)
