@@ -32,8 +32,8 @@ def dropdown(request):
         elif request.GET.get("dropdown") == "3":
             data_attribute_id = request.GET.get("id")
             data_attribute_obj = DataAttribute.objects.get(id=data_attribute_id)
-            data_attribute_type = DataAttributeType.objects.get(dataAttribute=data_attribute_obj)
-            mappedTable = MappedTable.objects.filter(dataAttributeType=data_attribute_type).values()
+            data_attribute_type = DataEntries.objects.get(dataAttribute=data_attribute_obj)
+            mappedTable = MappedTable.objects.filter(DataEntries=data_attribute_type).values()
             if mappedTable:
                 data_attribute_table = list(mappedTable)
                 return JsonResponse({'status': 200, 'id':data_attribute_id, 'data_attribute_table':data_attribute_table, 'table':True})

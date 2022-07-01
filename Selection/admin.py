@@ -8,6 +8,6 @@ admin.site.register(DropDown2)
 
 admin.site.register(DataAttribute)
 
-admin.site.register(DataAttributeType)
+admin.site.register(DataEntries)
 
 admin.site.register(MappedTable)
