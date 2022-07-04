@@ -17,13 +17,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'index/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'index/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'index/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'index/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'index/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Template Main CSS File -->
   <link href="{% static 'index/css/style.css' %}" rel="stylesheet">
@@ -34,6 +28,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'index/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'index/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
 </head>
 
@@ -57,7 +59,12 @@
           {% endif %}
 
           {% if user.is_authenticated %}
-            <li><a class="logout-btn" href="{% url 'logout' %}">logout</a></li>
+            <!-- <li class="border: none !important"><a class="logout-btn" href="{% url 'logout' %}">logout</a></li> -->
+            <li>
+              <button type="button" class="btn btn-primary" onclick="location.href='/logout'" style="background-color: #347C17;">
+                logout
+              </button>
+            </li>
           {% else %}
             <li>
 
@@ -71,34 +78,46 @@
                   <div class="modal-content">
               
                     <!-- Modal Header -->
-                    <div class="modal-header">
-                      <h4 class="modal-title">Login</h4>
+                    <div class="close-btn-div">
                       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-header">
+                      <h2 class="modal-title">Login</h2>
                     </div>
               
                     <!-- Modal body -->
                     <form role="form" action="{% url 'login' %}" class="modal-form" method="POST">
                       {% csrf_token %}
-                      <div class="form-group">
-                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                        <input type="text" class="form-control" id="usrname" name="username" placeholder="Enter email">
+
+                      <div class="col-md-12 mb-3">
+                        <label for="validationDefaultUsername">Username</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="text" class="form-control" id="usrname" name="username" placeholder="Enter username" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                        <input type="password"  class="form-control" name="password" id="psw" placeholder="Enter password">
+
+                      <div class="col-md-12 mb-3" style="margin-bottom: 0px !important;">
+                        <label for="validationDefaultUsername">Password</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
-                        <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+
+                      <a href="{% url 'reset_password' %}" class="forget-password-btn">Forget Password?</a>
+
+                      <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+
+                      <div class="new-account-div">
+                        <p style="margin: 0px;" id="create-account">Dont have an account? <span class="create-account-btn"><b>create one</b></span></p>
+                      </div>
+
                     </form>
-              
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <div>
-                        <p style="margin: 0px;" id="create-account">Dont have an account? <span class="create-account-btn"><b>create account</b></span></p>
-                        <a href="{% url 'reset_password' %}" style="text-decoration: none;">Forget Password?</a>
-                      </div>
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-              
                   </div>
                 </div>
 
@@ -106,52 +125,217 @@
                   <div class="modal-content">
               
                     <!-- Modal Header -->
-                    <div class="modal-header">
-                      <h4 class="modal-title">Sign-up</h4>
+                    <div class="close-btn-div">
                       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-header">
+                      <h2 class="modal-title">Sign-up</h2>
                     </div>
               
                     <!-- Modal body -->
                     <form role="form" action="{% url 'register' %}" class="modal-form" method="POST">
                       {% csrf_token %}
-                      <div class="form-group">
-                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                        <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter Username" required>
+
+
+                      <div class="col-md-12 mb-3">
+                        <label for="validationDefaultUsername">Username</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter username" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required>
+
+                      <div class="col-md-12 mb-3">
+                        <label for="validationDefaultUsername">Email</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                        <input type="password" class="form-control" name="password1" id="psw" placeholder="Enter password" required>
+
+                      <div class="col-md-12 mb-3">
+                        <label for="validationDefaultUsername">Password</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="password" class="form-control" name="password1" id="psw" placeholder="Enter password" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Confirm Password</label>
-                        <input type="password" class="form-control" name="password2" id="psw" placeholder="Enter password again" required>
+
+                      <div class="col-md-12 mb-3" style="margin-bottom: 20px !important;">
+                        <label for="validationDefaultUsername">Confirm Password</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="password" class="form-control" name="password2" id="psw2" placeholder="Re-Enter password" aria-describedby="inputGroupPrepend2" required>
+                        </div>
                       </div>
+
                         <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Sign up</button>
+
+                        <div class="new-account-div">
+                          <p style="margin: 0px;">Have an account? <span class="create-account-btn" id="login-account-btn"><b>Login</b></span></p>
+                        </div>
                     </form>
-              
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <div>
-                        <p style="margin: 0px;">Have an account? <span class="login-account-btn" id="login-account-btn"><b>Login</b></span></p>
-                      </div>
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-              
                   </div>
                 </div>
               </div>
             </li>
             {% endif %}
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list" id="mobile-nav-btn"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
+  <div class="mobile-nav-div hide" id="mobile-nav-div">
+    <ul class="mobile-nav-ul">
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto active" href="#about">About-us</a></li>
+        <li><a class="nav-link scrollto active" href="#contact">Contact-us</a></li>
+
+        {% if user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="{% url 'selections' %}">Selection</a></li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+          <!-- <li class="border: none !important"><a class="logout-btn" href="{% url 'logout' %}">logout</a></li> -->
+          <li>
+            <button type="button" class="btn btn-primary" onclick="location.href='/logout'" style="background-color: #347C17;">
+              logout
+            </button>
+          </li>
+        {% else %}
+          <li>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2" style="background-color: #347C17;">
+              login
+            </button>
+            
+            <!-- The Modal -->
+            <div class="modal" id="myModal2">
+              <div class="modal-dialog" id="login-modal">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="close-btn-div">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-header">
+                    <h2 class="modal-title">Login</h2>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <form role="form" action="{% url 'login' %}" class="modal-form" method="POST">
+                    {% csrf_token %}
+
+                    <div class="col-md-12 mb-3">
+                      <label for="validationDefaultUsername">Username</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="text" class="form-control" id="usrname" name="username" placeholder="Enter username" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3" style="margin-bottom: 0px !important;">
+                      <label for="validationDefaultUsername">Password</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                    <a href="{% url 'reset_password' %}" class="forget-password-btn">Forget Password?</a>
+
+                    <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+
+                    <div class="new-account-div">
+                      <p style="margin: 0px;" id="create-account">Dont have an account? <span class="create-account-btn"><b>create one</b></span></p>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+
+              <div class="modal-dialog" id="sign-up-modal">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="close-btn-div">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-header">
+                    <h2 class="modal-title">Sign-up</h2>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <form role="form" action="{% url 'register' %}" class="modal-form" method="POST">
+                    {% csrf_token %}
+
+
+                    <div class="col-md-12 mb-3">
+                      <label for="validationDefaultUsername">Username</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter username" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                      <label for="validationDefaultUsername">Email</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                      <label for="validationDefaultUsername">Password</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password1" id="psw" placeholder="Enter password" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3" style="margin-bottom: 20px !important;">
+                      <label for="validationDefaultUsername">Confirm Password</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span style="height: 100%;" class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-key" aria-hidden="true"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password2" id="psw2" placeholder="Re-Enter password" aria-describedby="inputGroupPrepend2" required>
+                      </div>
+                    </div>
+
+                      <button type="submit" class="btn btn-modal-submit btn-block"><span class="glyphicon glyphicon-off"></span> Sign up</button>
+
+                      <div class="new-account-div">
+                        <p style="margin: 0px;">Have an account? <span class="create-account-btn" id="login-account-btn"><b>Login</b></span></p>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+  </div>
 
   {% if msg %}
     <div class="alert alert-danger" role="alert">
@@ -175,7 +359,7 @@
       <div class="d-flex">
 
         {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a>
+            <a style="cursor: pointer; text-decoration: none;" href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a>
           {% else %}
             <a style="cursor: pointer; text-decoration: none;" class="btn-get-started scrollto" data-bs-toggle="modal" data-bs-target="#myModal">Get Started</a>
           {% endif %}
@@ -310,10 +494,10 @@
   <script src="{% static 'index/vendor/waypoints/noframework.waypoints.js' %}"></script>
   <script src="{% static 'index/vendor/php-email-form/validate.js' %}"></script>
 
-  <!-- Template Main JS File -->
-  <script src="{% static 'index/js/main.js' %}"></script>
-
   <script src="{% static 'js/home.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'index/js/main.js' %}"></script>
 
 </body>
 

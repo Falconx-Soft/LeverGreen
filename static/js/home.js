@@ -12,3 +12,16 @@ login.addEventListener("click", function(){
 
   document.getElementById("sign-up-modal").style.display = "none"
 });
+
+
+const mobile_nav_btn = document.getElementById("mobile-nav-btn");
+mobile_nav_btn.addEventListener("click", function(){
+  const mobile_nav_div = document.getElementById("mobile-nav-div");
+
+  if(mobile_nav_div.classList.contains("hide")){
+    mobile_nav_div.classList.remove("hide");
+  }else{
+    mobile_nav_div.classList.add("hide");
+  }
+
+});

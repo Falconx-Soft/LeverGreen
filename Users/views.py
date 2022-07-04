@@ -14,7 +14,7 @@ def index(request):
 def loginUser(request):
 
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('selections')
     msg = None
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -37,7 +37,6 @@ def loginUser(request):
     return render(request,'Users/index.html',context)
 
 def register(request):
-    msg = None
     form = CutomUserCreationForm
     if request.method == 'POST':
         form = CutomUserCreationForm(request.POST)
@@ -46,9 +45,7 @@ def register(request):
             user.username = user.username.lower()
             user.save()
             return redirect('index')
-        else:
-            msg = 'form validation error.'
-    context = {'form':form, 'msg':msg}
+    context = {'form':form}
     return render(request,'Users/index.html', context)
 
 def logoutUser(request):
