@@ -82,7 +82,7 @@ function dropDown3Change(){
             data: payload,
             timeout: 5000,
             success: function(data) {
-                console.log("SUCCESS", data.data_attribute_table)
+                console.log("SUCCESS",data)
                 let newList = '';
                 var t = $('#footer-search').DataTable();
                 if(data.table){
@@ -92,6 +92,16 @@ function dropDown3Change(){
                     }
                     document.getElementById("dataAttributeDivTable").style.display = "-webkit-inline-box";
                     document.getElementById("dataAttributeDivCard").style.display = "none";
+                }else if(data.all_attributes_list){
+                    newList = "";
+                    console.log("Here");
+                    for(let i=0; i<data.all_attributes_list.length; i++){
+                        newList += "<p class='value-display'><b>"+data.all_attributes_list[i]+"</p>";
+                    }
+                    document.getElementById("dataAttributeDivCard").innerHTML = newList;
+
+                    document.getElementById("dataAttributeDivTable").style.display = "none";
+                    document.getElementById("dataAttributeDivCard").style.display = "block";
                 }else{
                     newList = "<p class='value-display'><b>"+document.getElementById("dropdown2").value+":</b> "+data.data_attribute_type+"</p>";
                     document.getElementById("dataAttributeDivCard").innerHTML = newList;

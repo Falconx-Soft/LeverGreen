@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import *
+import json
 from django.http import JsonResponse
 # Create your views here.
 
@@ -39,30 +40,22 @@ def dropdown(request):
             drop_down_3_obj = DataAttribute.objects.get(id=dropdown3_id)
 
 
+            if drop_down_3_obj.name == "All":
+                all_attributes = DataAttribute.objects.filter(dropDown1=drop_down_1_obj)
+                
+                all_attributes_list = list()
 
-            data_attribute_type = DataEntries.objects.get(dropDown1=drop_down_1_obj,dropDown2=drop_down_2_obj,dataAttribute=drop_down_3_obj)
-            mappedTable = MappedTable.objects.filter(DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
-            if mappedTable:
-                data_attribute_table = list(mappedTable)
-                return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_table':data_attribute_table, 'table':True})
+                for attribute in all_attributes:
+                    if attribute.name != "All":
+                        temp = DataEntries.objects.get(dropDown1=drop_down_1_obj,dropDown2=drop_down_2_obj,dataAttribute=attribute)
+                        all_attributes_list.append( temp.dataAttribute.name+":"+temp.name)
+                return JsonResponse({'status': 200, 'id':dropdown3_id, 'all_attributes_list':all_attributes_list, 'table':False})
             else:
-                return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
-
-        elif request.GET.get("dropdown") == "search":
-            dropdown1_id = request.GET.get("dropdown1")
-            dropdown2_id = request.GET.get("dropdown2")
-            dropdown3_id = request.GET.get("dropdown3")
-
-            value = request.GET.get("value")
-
-            drop_down_1_obj = DropDown1.objects.get(id=dropdown1_id)
-            drop_down_2_obj = DropDown2.objects.get(id=dropdown2_id)
-            drop_down_3_obj = DataAttribute.objects.get(id=dropdown3_id)
-
-            mappedTable = MappedTable.objects.filter( LMP__icontains=value, DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
-
-            if mappedTable:
-                data_attribute_table = list(mappedTable)
-                return JsonResponse({'status': 200, 'data_attribute_table':data_attribute_table})
-            else:
-                return JsonResponse({'status': 200, 'data_attribute_table':'No data'})
+                data_attribute_type = DataEntries.objects.get(dropDown1=drop_down_1_obj,dropDown2=drop_down_2_obj,dataAttribute=drop_down_3_obj)
+                mappedTable = MappedTable.objects.filter(DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
+                if mappedTable:
+                    data_attribute_table = list(mappedTable)
+                    return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_table':data_attribute_table, 'table':True})
+                else:
+                    return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
+                    
