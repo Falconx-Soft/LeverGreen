@@ -12,6 +12,7 @@
     padding-top: 10%;
     min-width: 100% !important;
     width: auto;
+    min-height: 100vh !important;
 }
 
 .logout-btn{
@@ -29,9 +30,29 @@
     background-color: transparent;
 }
 
+
+#dataAttributeDiv::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #dataAttributeDiv {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
 @media only screen and (min-width:1200px) {
     .select2-container{
         width: 250px;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    .table-div{
+        display: -webkit-inline-box; 
+        overflow-x: scroll; 
+        width: 100%;
+        min-height: 350px;
     }
 }
 

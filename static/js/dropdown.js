@@ -1,5 +1,8 @@
 function dropDown1Change(){
     const dropdown1 = document.getElementById("dropdown1");
+    document.getElementById("dataAttributeDiv").classList.remove("table-div");
+    document.getElementById("dataAttributeDiv").innerHTML = '';
+
     if(dropdown1.value != ""){
         payload = {
             "id": dropdown1.value,
@@ -30,6 +33,8 @@ function dropDown1Change(){
 
 function dropDown2Change(){
     const dropdown1 = document.getElementById("dropdown1");
+    document.getElementById("dataAttributeDiv").classList.remove("table-div");
+    document.getElementById("dataAttributeDiv").innerHTML = '';
     if(dropdown1.value != ""){
         payload = {
             "id": dropdown1.value,
@@ -86,9 +91,11 @@ function dropDown3Change(){
                     newList += '</tbody></table></div></div>'
 
                     document.getElementById("dataAttributeDiv").innerHTML = newList;
+                    document.getElementById("dataAttributeDiv").classList.add("table-div");
                 }else{
                     newList = "<p class='value-display'><b>"+document.getElementById("dropdown2").value+":</b> "+data.data_attribute_type+"</p>";
                     document.getElementById("dataAttributeDiv").innerHTML = newList;
+                    document.getElementById("dataAttributeDiv").classList.remove("table-div");
                 }
             },
             error: function(data) {
