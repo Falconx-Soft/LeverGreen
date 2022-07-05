@@ -51,11 +51,11 @@ def dropdown(request):
                         all_attributes_list.append( temp.dataAttribute.name+":"+temp.name)
                 return JsonResponse({'status': 200, 'id':dropdown3_id, 'all_attributes_list':all_attributes_list, 'table':False})
             else:
-                try:
-                    data_attribute_type = DataEntries.objects.get(dropDown1=drop_down_1_obj,dropDown2=drop_down_2_obj,dataAttribute=drop_down_3_obj)
-                    return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
-                except:
-                    mappedTable = MappedTable.objects.filter(DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
+                data_attribute_type = DataEntries.objects.get(dropDown1=drop_down_1_obj,dropDown2=drop_down_2_obj,dataAttribute=drop_down_3_obj)
+                mappedTable = MappedTable.objects.filter(DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
+                if mappedTable:
                     data_attribute_table = list(mappedTable)
                     return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_table':data_attribute_table, 'table':True})
+                else:
+                    return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
                     

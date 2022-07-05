@@ -33,12 +33,12 @@ function dropDown1Change(){
 }
 
 function dropDown2Change(){
-    const dropdown1 = document.getElementById("dropdown1");
+    const dropdown2 = document.getElementById("dropdown2");
     document.getElementById("dataAttributeDivTable").style.display = "none";
     document.getElementById("dataAttributeDivCard").style.display = "none";
-    if(dropdown1.value != ""){
+    if(dropdown2.value != ""){
         payload = {
-            "id": dropdown1.value,
+            "id": dropdown2.value,
             "dropdown": "2",
         }
         $.ajax({
