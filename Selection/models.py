@@ -18,7 +18,7 @@ class DataAttribute(models.Model):
     name = models.CharField(max_length=700)
 
     def __str__(self):
-            return self.name
+            return self.name+" "+self.dropDown1.name
 
 class DataEntries(models.Model):
     dropDown1 = models.ForeignKey(DropDown1, on_delete=models.CASCADE, null=True)
