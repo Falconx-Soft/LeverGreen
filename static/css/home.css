@@ -3,13 +3,14 @@
     margin: 0px;
     padding: 20px;
     font-size: larger;
+    width: 100%;
 }
 
 #hero{
     display: flex;
     align-items: center;
     padding-top: 10%;
-    min-width: 100vh !important;
+    min-width: 100% !important;
     width: auto;
 }
 
@@ -28,8 +29,9 @@
     background-color: transparent;
 }
 
-.select2-container{
-    width: 100%;
-    min-width: 250px;
+@media only screen and (min-width:1200px) {
+    .select2-container{
+        width: 250px;
+    }
 }
 
