@@ -47,3 +47,22 @@ def dropdown(request):
                 return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_table':data_attribute_table, 'table':True})
             else:
                 return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
+
+        elif request.GET.get("dropdown") == "search":
+            dropdown1_id = request.GET.get("dropdown1")
+            dropdown2_id = request.GET.get("dropdown2")
+            dropdown3_id = request.GET.get("dropdown3")
+
+            value = request.GET.get("value")
+
+            drop_down_1_obj = DropDown1.objects.get(id=dropdown1_id)
+            drop_down_2_obj = DropDown2.objects.get(id=dropdown2_id)
+            drop_down_3_obj = DataAttribute.objects.get(id=dropdown3_id)
+
+            mappedTable = MappedTable.objects.filter( LMP__icontains=value, DataAttribute=drop_down_3_obj,entriesID=drop_down_2_obj.name).values()
+
+            if mappedTable:
+                data_attribute_table = list(mappedTable)
+                return JsonResponse({'status': 200, 'data_attribute_table':data_attribute_table})
+            else:
+                return JsonResponse({'status': 200, 'data_attribute_table':'No data'})

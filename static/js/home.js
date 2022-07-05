@@ -16,6 +16,7 @@ login.addEventListener("click", function(){
 
 const mobile_nav_btn = document.getElementById("mobile-nav-btn");
 mobile_nav_btn.addEventListener("click", function(){
+  console.log("Clicked")
   const mobile_nav_div = document.getElementById("mobile-nav-div");
 
   if(mobile_nav_div.classList.contains("hide")){
