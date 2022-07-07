@@ -59,3 +59,11 @@ def dropdown(request):
                 else:
                     return JsonResponse({'status': 200, 'id':dropdown3_id, 'data_attribute_type':data_attribute_type.name, 'table':False})
                     
+def blogs(request):
+    return render(request,'Selection/blogs.html')
+
+def details(request):
+    return render(request, 'Selection/details.html')
+
+def contact(request):
+    return render(request, 'Selection/contact-us.html')

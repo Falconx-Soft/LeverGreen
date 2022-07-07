@@ -1,0 +1,78 @@
+{% extends "dashboard.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+<link href="{% static 'index/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+    
+        <h1 class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo error"></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+    
+        <nav id="navbar" class="navbar">
+            <ul>
+            <li><a class="nav-link scrollto" href="{% url 'index' %}">Home</a></li>
+
+            <li><a class="nav-link scrollto" href="{% url 'selections' %}">Market Intelligence Dashboard</a></li>
+    
+            <li style="padding: 10px 20px;">
+                <button type="button" class="btn btn-primary" onclick="location.href='/logout'"
+                style="background-color: #347C17;">
+                logout
+                </button>
+            </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    
+        </div>
+    </header><!-- End Header -->
+
+    <div class="card" id="hero" style="padding-top: 2%;">
+
+        <div class="card display-text details-div">
+
+            <div class="detail-image">
+                <img src="{% static 'images/pattern.jpg' %}">
+            </div>
+
+            <div class="detail-content">
+                <h3 style="color: 347C17;">Title</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam quo odit similique ducimus doloremque laborum odio blanditiis. Id velit illo temporibus aliquid ducimus, perferendis autem nam neque ipsum dignissimos culpa praesentium et eligendi delectus, sequi dolores magnam accusamus, dolor quae saepe ea molestiae! Neque aliquid iure voluptate facilis sit, placeat soluta non sapiente odio ipsam in, error tenetur mollitia dolor ipsum vitae maiores temporibus nam eligendi dicta! Est numquam distinctio ab dolorem facere reiciendis nam. Vero facilis, nisi dolorum similique laboriosam culpa animi, ad molestias architecto perspiciatis repellendus! Iure incidunt, ea fuga, quisquam ducimus necessitatibus nulla ipsum nostrum fugiat enim magni aut nemo dolore laudantium iusto ab beatae porro ex aperiam. Temporibus ut tempora distinctio neque placeat perspiciatis recusandae accusantium itaque architecto facilis earum dolores, veniam aspernatur, doloremque qui atque. Eum rem non quae eaque sit laboriosam molestiae nobis aspernatur in dolor, tenetur alias rerum esse? Nulla impedit fuga saepe?</p>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/dropdown.js' %}"></script>
+
+    <script src="{% static 'index/vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'index/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'index/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'index/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'index/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'index/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'index/vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <script src="{% static 'index/vendor/php-email-form/validate.js' %}"></script>
+
+    <script src="{% static 'js/home.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'index/js/main.js' %}"></script>
+{% endblock %}

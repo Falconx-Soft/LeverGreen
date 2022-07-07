@@ -1,0 +1,10 @@
+.details-div{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+}
+
+.detail-content{
+    padding-left: 20px;
+    padding-right: 20px;
+}

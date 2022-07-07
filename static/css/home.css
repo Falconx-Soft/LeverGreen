@@ -1,5 +1,5 @@
 .value-display{
-    text-align: center;
+    text-align: left !important;
     margin: 0px;
     padding: 20px;
     font-size: larger;
@@ -40,6 +40,13 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+.display-text{
+    padding: 10px; 
+    background-color: transparent; 
+    border: none; 
+    -webkit-box-shadow:none;
+}
 
 @media only screen and (min-width:1200px) {
     .select2-container{

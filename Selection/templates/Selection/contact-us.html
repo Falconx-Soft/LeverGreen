@@ -52,7 +52,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto active" href="#about">About-us</a></li>
-          <li><a class="nav-link scrollto active" href="#contact">Contact-us</a></li>
+          <li><a class="nav-link scrollto active" href="#contact" id="contact">Contact-us</a></li>
 
           {% if user.is_authenticated %}
             <li><a class="nav-link scrollto" href="{% url 'selections' %}">Market Intelligence Dashboard</a></li>
@@ -342,6 +342,22 @@
     </div>
   </footer><!-- End Footer -->
 
+
+  <script>
+
+    var delayInMilliseconds = 2000; //1 second
+
+    setTimeout(function() {
+      document.getElementById("contact").click();
+      console.log("Hello");
+      window.scrollTo(0, 1350);
+    }, delayInMilliseconds);
+
+    setTimeout();
+
+    console.log("Hello");
+    
+  </script>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'index/vendor/purecounter/purecounter.js' %}"></script>

@@ -23,6 +23,10 @@
       <ul>
         <li><a class="nav-link scrollto" href="{% url 'index' %}">Home</a></li>
 
+        <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact-us</a></li>
+
+        <li><a class="nav-link scrollto" href="{% url 'blogs' %}">Blogs</a></li>
+
         <li style="padding: 10px 20px;">
           <button type="button" class="btn btn-primary" onclick="location.href='/logout'"
             style="background-color: #347C17;">
@@ -37,11 +41,16 @@
 </header><!-- End Header -->
 
 <div class="card" id="hero">
+
+  <div class="card display-text">
+    <h1 style="text-align: center; font-size: 32px; color: #0047AB;">Market Intelligence Dashboard - All-in Data Navigator</h1>
+    <p style="text-align: center;">To navigate through gigabytes of data in the energy industry</p>
+  </div>
   <div class="card-block">
     <div class="row">
       <div class="col-sm-12 col-xl-4 m-b-30">
         <select class="js-example-basic-single col-sm-12" id="dropdown1" onchange="dropDown1Change()">
-          <option value="">----</option>
+          <option value="">Select Data Category</option>
           {% for options in drop_dow_1 %}
           <option value="{{options.id}}">{{options.name}}</option>
           {% endfor %}
@@ -50,16 +59,20 @@
 
       <div class="col-sm-12 col-xl-4 m-b-30">
         <select class="js-example-basic-single col-sm-12" id="dropdown2" onchange="dropDown2Change()">
-          <option value="">----</option>
+          <option value="">Select Data Entry</option>
         </select>
       </div>
 
       <div class="col-sm-12 col-xl-4 m-b-30">
         <select class="js-example-basic-single col-sm-12" id="dropdown3" onchange="dropDown3Change()">
-          <option value="">----</option>
+          <option value="">Select Entry Attribute</option>
         </select>
       </div>
     </div>
+  </div>
+
+  <div class="card display-text" id="error-div" style="display: none;">
+    <p style="color: red; margin: 0px;">Selected data does not exist. Please contact support@levergreenenergy.com for assistance</p>
   </div>
 
   <div class="card table-div" id="dataAttributeDivTable" style="display: none;">

@@ -3,6 +3,11 @@ function dropDown1Change(){
 
     document.getElementById("dataAttributeDivTable").style.display = "none";
     document.getElementById("dataAttributeDivCard").style.display = "none";
+    document.getElementById("error-div").style.display = "none";
+
+    document.getElementById("dropdown2").value = "";
+    document.getElementById("dropdown3").value = "";
+
 
     if(dropdown1.value != ""){
         payload = {
@@ -36,6 +41,7 @@ function dropDown2Change(){
     const dropdown2 = document.getElementById("dropdown2");
     document.getElementById("dataAttributeDivTable").style.display = "none";
     document.getElementById("dataAttributeDivCard").style.display = "none";
+    document.getElementById("error-div").style.display = "none";
     if(dropdown2.value != ""){
         payload = {
             "id": dropdown2.value,
@@ -68,6 +74,7 @@ function dropDown3Change(){
     const dropdown1 = document.getElementById("dropdown1");
     const dropdown2 = document.getElementById("dropdown2");
     const dropdown3 = document.getElementById("dropdown3");
+    document.getElementById("error-div").style.display = "none";
     if(dropdown3.value != ""){
         payload = {
             "dropdown1":dropdown1.value,
@@ -112,7 +119,7 @@ function dropDown3Change(){
             },
             error: function(data) {
                 console.error("ERROR...", data);
-                alert("Data does not exist.");
+                document.getElementById("error-div").style.display = "block";
             },
         });
     }
